@@ -40,6 +40,9 @@ export default {
     border: 1px solid transparentize(#000000, 0.62);
     border-radius: 4px;
     cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
     padding: 5px 12px;
     transition: all 0.25s ease;
 

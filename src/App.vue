@@ -32,12 +32,21 @@ export default {
 </script>
 
 <style lang="scss">
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
   min-height: 100%;
   overflow: hidden;
 }
+
 #app {
   color: transparentize(#000000, 0.13);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
