@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "es6-promise": "^4.2.4",
+    "marked": "^0.4.0",
     "vue": "^2.5.16",
     "vuex": "^3.0.1"
   },
