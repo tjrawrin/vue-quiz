@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { mapActions, mapState } from 'vuex';
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import marked from 'marked'; // TODO: Fix
 
 @Component({

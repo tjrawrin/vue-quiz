@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { mapGetters } from 'vuex';
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
   name: 'score-card',

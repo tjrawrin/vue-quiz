@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { mapState } from 'vuex';
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 
 @Component({
   name: 'TopBar',
