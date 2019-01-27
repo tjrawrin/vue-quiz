@@ -1,35 +1,57 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { ActionTree, GetterTree, MutationTree } from 'vuex';
 
 Vue.use(Vuex);
 
 // initial state
-const state = {
+interface RootState {
+  currentCard: string;
+  currentQuestionIndex: number;
+  points: number;
+  questions: Array<{
+    type: string;
+    text: string;
+    responses: Array<{
+      correct: boolean;
+      text: string;
+    }>;
+    feedbackCorrect: string;
+    feedbackIncorrect: string;
+  }>;
+  questionCorrect: boolean;
+  selectedResponses: Array<{
+    correct: boolean;
+    text: string;
+  }>;
+}
+const state: RootState = {
   currentCard: 'question-card',
   currentQuestionIndex: 0,
   points: 0,
-  questions: window.questions,
+  questions: (window as any).questions,
   questionCorrect: false,
   selectedResponses: [],
 };
 
 // getters
-const getters = {
-  calculateFinalPercent: state => {
+const getters: GetterTree<RootState, RootState> = {
+  // tslint:disable-next-line:no-shadowed-variable
+  calculateFinalPercent: (state) => {
     return Math.floor((state.points / state.questions.length) * 100);
   },
-  lastQuestionIndex: state => {
+  // tslint:disable-next-line:no-shadowed-variable
+  lastQuestionIndex: (state) => {
     return state.currentQuestionIndex === state.questions.length - 1;
   },
 };
 
 // actions
-const actions = {
+const actions: ActionTree<RootState, RootState> = {
   checkAnswer(context) {
     context.commit('CHECK_ANSWER');
-    if (window.MathJax) {
+    if ((window as any).MathJax) {
       setTimeout(
-        () => window.MathJax.Hub.Queue(['Typeset', window.MathJax.Hub]),
+        () => (window as any).MathJax.Hub.Queue(['Typeset', (window as any).MathJax.Hub]),
         300,
       );
     }
@@ -41,22 +63,23 @@ const actions = {
   nextQuestion(context) {
     context.commit('CLEAR_SELECTED_RESPONSES');
     context.commit('NEXT_QUESTION');
-    if (window.MathJax) {
+    if ((window as any).MathJax) {
       setTimeout(
-        () => window.MathJax.Hub.Queue(['Typeset', window.MathJax.Hub]),
+        () => (window as any).MathJax.Hub.Queue(['Typeset', (window as any).MathJax.Hub]),
         300,
       );
     }
   },
   resetQuiz(context) {
     context.commit('RESET_QUIZ');
-    if (window.MathJax) {
+    if ((window as any).MathJax) {
       setTimeout(
-        () => window.MathJax.Hub.Queue(['Typeset', window.MathJax.Hub]),
+        () => (window as any).MathJax.Hub.Queue(['Typeset', (window as any).MathJax.Hub]),
         300,
       );
     }
   },
+  // tslint:disable-next-line:no-shadowed-variable
   updateSelectedResponses({ commit, state }, response) {
     if (state.questions[state.currentQuestionIndex].type !== 'MA') {
       commit('CLEAR_SELECTED_RESPONSES');
@@ -68,7 +91,8 @@ const actions = {
 };
 
 // mutations
-const mutations = {
+const mutations: MutationTree<RootState> = {
+  // tslint:disable-next-line:no-shadowed-variable
   CHECK_ANSWER(state) {
     if (state.questions[state.currentQuestionIndex].type === 'MA') {
       const correctCount = state.questions[
@@ -98,26 +122,31 @@ const mutations = {
     }
     state.currentCard = 'feedback-card';
   },
+  // tslint:disable-next-line:no-shadowed-variable
   CLEAR_SELECTED_RESPONSES(state) {
     state.selectedResponses = [];
   },
+  // tslint:disable-next-line:no-shadowed-variable
   FINISH_QUIZ(state) {
     state.currentCard = 'score-card';
   },
+  // tslint:disable-next-line:no-shadowed-variable
   NEXT_QUESTION(state) {
     state.currentQuestionIndex = state.currentQuestionIndex + 1;
     state.currentCard = 'question-card';
   },
+  // tslint:disable-next-line:no-shadowed-variable
   RESET_QUIZ(state) {
     state.currentQuestionIndex = 0;
     state.points = 0;
     state.questionCorrect = false;
     state.currentCard = 'question-card';
   },
+  // tslint:disable-next-line:no-shadowed-variable
   UPDATE_SELECTED_RESPONSES(state, response) {
     if (state.selectedResponses.indexOf(response) !== -1) {
       state.selectedResponses = state.selectedResponses.filter(
-        item => item !== response,
+        (item) => item !== response,
       );
     } else {
       state.selectedResponses.push(response);
@@ -125,7 +154,7 @@ const mutations = {
   },
 };
 
-export default new Vuex.Store({
+export default new Vuex.Store<RootState>({
   state,
   getters,
   actions,
