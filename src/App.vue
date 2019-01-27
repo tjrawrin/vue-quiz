@@ -24,11 +24,11 @@ import TopBar from './components/TopBar.vue';
     FeedbackCard,
     QuestionCard,
     ScoreCard,
-    TopBar
+    TopBar,
   },
   computed: {
-    ...mapState(['currentCard'])
-  }
+    ...mapState(['currentCard']),
+  },
 })
 export default class App extends Vue {}
 </script>
