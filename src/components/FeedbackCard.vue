@@ -8,7 +8,7 @@
 <script lang="ts">
 import { mapState } from 'vuex';
 import { Component, Vue } from 'vue-property-decorator';
-import marked from 'marked'; // TODO: Fix
+import marked from 'marked';
 
 @Component({
   name: 'feedback-card',
