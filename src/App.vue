@@ -9,16 +9,16 @@
 </template>
 
 <script lang="ts">
-import { mapState } from "vuex";
-import { Component, Vue } from "vue-property-decorator";
-import BottomBar from "./components/BottomBar.vue";
-import FeedbackCard from "./components/FeedbackCard.vue";
-import QuestionCard from "./components/QuestionCard.vue";
-import ScoreCard from "./components/ScoreCard.vue";
-import TopBar from "./components/TopBar.vue";
+import { mapState } from 'vuex';
+import { Component, Vue } from 'vue-property-decorator';
+import BottomBar from './components/BottomBar.vue';
+import FeedbackCard from './components/FeedbackCard.vue';
+import QuestionCard from './components/QuestionCard.vue';
+import ScoreCard from './components/ScoreCard.vue';
+import TopBar from './components/TopBar.vue';
 
 @Component({
-  name: "app",
+  name: 'app',
   components: {
     BottomBar,
     FeedbackCard,
@@ -27,7 +27,7 @@ import TopBar from "./components/TopBar.vue";
     TopBar
   },
   computed: {
-    ...mapState(["currentCard"])
+    ...mapState(['currentCard'])
   }
 })
 export default class App extends Vue {}
