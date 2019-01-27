@@ -1,34 +1,36 @@
 <template>
   <div id="app" role="main">
-    <TopBar />
+    <TopBar/>
     <transition name="fade" mode="out-in">
       <component :is="currentCard"></component>
     </transition>
-    <BottomBar />
+    <BottomBar/>
   </div>
 </template>
 
-<script>
-import { mapState } from 'vuex';
-import BottomBar from './components/BottomBar';
-import FeedbackCard from './components/FeedbackCard';
-import QuestionCard from './components/QuestionCard';
-import ScoreCard from './components/ScoreCard';
-import TopBar from './components/TopBar';
+<script lang="ts">
+import { mapState } from "vuex";
+import { Component, Vue } from "vue-property-decorator";
+import BottomBar from "./components/BottomBar.vue";
+import FeedbackCard from "./components/FeedbackCard.vue";
+import QuestionCard from "./components/QuestionCard.vue";
+import ScoreCard from "./components/ScoreCard.vue";
+import TopBar from "./components/TopBar.vue";
 
-export default {
-  name: 'app',
+@Component({
+  name: "app",
   components: {
     BottomBar,
     FeedbackCard,
     QuestionCard,
     ScoreCard,
-    TopBar,
+    TopBar
   },
   computed: {
-    ...mapState(['currentCard']),
-  },
-};
+    ...mapState(["currentCard"])
+  }
+})
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">
@@ -47,8 +49,8 @@ body {
 }
 #app {
   color: transparentize(#000000, 0.13);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.75;

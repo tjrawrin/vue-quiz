@@ -9,15 +9,17 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapGetters } from 'vuex';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-export default {
+@Component({
   name: 'score-card',
   computed: {
     ...mapGetters(['calculateFinalPercent']),
   },
-};
+})
+export default class ScoreCard extends Vue {}
 </script>
 
 <style lang="scss">

@@ -13,11 +13,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapActions, mapState } from 'vuex';
-import marked from 'marked';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import marked from 'marked'; // TODO: Fix
 
-export default {
+@Component({
   name: 'question-card',
   computed: {
     ...mapState(['currentQuestionIndex', 'questions']),
@@ -28,7 +29,8 @@ export default {
       return marked.inlineLexer(text, []);
     },
   },
-};
+})
+export default class QuestionCard extends Vue {}
 </script>
 
 <style lang="scss">

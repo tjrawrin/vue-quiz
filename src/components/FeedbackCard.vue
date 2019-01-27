@@ -5,11 +5,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapState } from 'vuex';
-import marked from 'marked';
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import marked from 'marked'; // TODO: Fix
 
-export default {
+@Component({
   name: 'feedback-card',
   computed: {
     ...mapState(['currentQuestionIndex', 'questions', 'questionCorrect']),
@@ -19,7 +20,8 @@ export default {
       return marked.inlineLexer(text, []);
     },
   },
-};
+})
+export default class FeedbackCard extends Vue {}
 </script>
 
 <style lang="scss">

@@ -6,10 +6,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapState } from 'vuex';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-export default {
+@Component({
   name: 'TopBar',
   computed: {
     ...mapState([
@@ -19,7 +20,8 @@ export default {
       'questionCorrect',
     ]),
   },
-};
+})
+export default class TopBar extends Vue {}
 </script>
 
 <style lang="scss">

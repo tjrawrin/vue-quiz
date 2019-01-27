@@ -7,10 +7,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { mapActions, mapGetters, mapState } from 'vuex';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 
-export default {
+@Component({
   name: 'BottomBar',
   computed: {
     ...mapGetters(['lastQuestionIndex']),
@@ -19,7 +20,8 @@ export default {
   methods: {
     ...mapActions(['checkAnswer', 'finishQuiz', 'nextQuestion', 'resetQuiz']),
   },
-};
+})
+export default class BottomBar extends Vue {}
 </script>
 
 <style lang="scss">
