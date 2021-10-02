@@ -38,16 +38,16 @@ export default class QuestionCard extends Vue {}
   background-color: #f5f5f5;
   border: 1px solid transparentize(#000000, 0.62);
   border-radius: 4px;
-  bottom: 54px;
+  bottom: 64px;
   left: 2px;
   overflow-y: auto;
-  padding: 10px;
+  padding: 14px;
   position: absolute;
   right: 2px;
   top: 54px;
   &-text {
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 800;
   }
   &-responses {
     margin: 0;
@@ -60,7 +60,7 @@ export default class QuestionCard extends Vue {}
   &-label {
     align-items: center;
     border: 1px solid transparentize(#000000, 0.62);
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
     display: flex;
     margin: 0;

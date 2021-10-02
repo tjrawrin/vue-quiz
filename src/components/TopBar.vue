@@ -1,7 +1,7 @@
 <template>
   <div class="TopBar" :class="{ 'TopBar--correct': questionCorrect && currentCard === 'feedback-card', 'TopBar--incorrect': !questionCorrect && currentCard === 'feedback-card' }">
     <span v-if="(questionCorrect || !questionCorrect) && currentCard === 'feedback-card'" v-text="(questionCorrect ? 'Correct!' : '') || (!questionCorrect ? 'Incorrect!' : '')"></span>
-    <span v-if="currentCard !== 'score-card'">Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}</span>
+    <span v-if="currentCard !== 'score-card'">Question {{ currentQuestionIndex + 1 }} of {{ questions.length }}.</span>
     <span v-if="currentCard === 'score-card'">Final Score</span>
   </div>
 </template>
