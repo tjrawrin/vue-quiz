@@ -3,7 +3,7 @@ import Vuex, { ActionTree, GetterTree, MutationTree } from 'vuex';
 
 Vue.use(Vuex);
 
-// initial state
+// initial state initially
 interface RootState {
   currentCard: string;
   currentQuestionIndex: number;
@@ -45,7 +45,7 @@ const getters: GetterTree<RootState, RootState> = {
   },
 };
 
-// actions
+// actions and other stuff
 const actions: ActionTree<RootState, RootState> = {
   checkAnswer(context) {
     context.commit('CHECK_ANSWER');
