@@ -43,6 +43,14 @@ const getters: GetterTree<RootState, RootState> = {
   lastQuestionIndex: (state) => {
     return state.currentQuestionIndex === state.questions.length - 1;
   },
+  // tslint:disable-next-line:no-shadowed-variable
+  getNumPoints: (state) => {
+    return state.points;
+  },
+  // tslint:disable-next-line:no-shadowed-variable
+  getNumQuestions: (state) => {
+    return state.questions.length - 1;
+  },
 };
 
 // actions and other stuff
