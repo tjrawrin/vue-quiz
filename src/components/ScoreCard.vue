@@ -5,6 +5,7 @@
       <circle cx="100" cy="100" r="79.5775" fill="none" stroke-width="16" transform="rotate(-90,100,100)" stroke="#e0e0e0" stroke-dashoffset="0" stroke-dasharray="500, 500" />
       <circle cx="100" cy="100" r="79.5775" fill="none" stroke-width="16" transform="rotate(-90,100,100)" stroke="#81c784" :stroke-dashoffset="500 - (calculateFinalPercent * 5)" stroke-dasharray="500, 500" />
       <text x="50%" y="50%" dy="8" text-anchor="middle" font-size="24px">{{ calculateFinalPercent }}%</text>
+      <text x="50%" y="50%" dy="8" text-anchor="middle" font-size="24px">{{ getNumPoints }} of {{ getNumQuestions }} questions correct.%</text>
     </svg>
   </div>
 </template>
@@ -16,7 +17,7 @@ import { Component, Vue } from 'vue-property-decorator';
 @Component({
   name: 'score-card',
   computed: {
-    ...mapGetters(['calculateFinalPercent']),
+    ...mapGetters(['calculateFinalPercent, getNumPoints, getNumQuestions']),
   },
 })
 export default class ScoreCard extends Vue {}
